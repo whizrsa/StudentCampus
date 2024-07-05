@@ -59,12 +59,14 @@ namespace StudentCampus
                     break;
 
                 case 6:
-
+                    Console.Clear();
+                    UpdateStudent(stud);
 
                     break;
 
                 case 7:
-
+                    Console.Clear();
+                    DeleteStudent(stud);
 
                     break;
 
@@ -221,7 +223,7 @@ namespace StudentCampus
             }
         }
 
-        public static void UpdateStudenta(List<Student> stud)
+        public static void UpdateStudent(List<Student> stud)
         {
             Console.WriteLine("Search for Student");
             string stName = Console.ReadLine();
@@ -264,6 +266,29 @@ namespace StudentCampus
                             Console.WriteLine("Incorrect Option!\nChoose between 1 to 4");
                             break;
                     }
+                }
+            }
+
+            if (!studentFound)
+            {
+                Console.WriteLine("Student does not exist!");
+            }
+        }
+
+        public static void DeleteStudent(List<Student> stud)
+        {
+            Console.WriteLine("Find Student");
+            string name = Console.ReadLine();
+
+            bool studentFound = false;
+
+            for(int i = 0; i < stud.Count; i++)
+            {
+                if(stud[i].Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                {
+                    studentFound = true;
+                    stud.RemoveAt(i); //removes at that specific index
+                    break;
                 }
             }
 
