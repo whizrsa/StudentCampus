@@ -220,5 +220,57 @@ namespace StudentCampus
                 Console.WriteLine("Student wih name -{0}- was not found", name);
             }
         }
+
+        public static void UpdateStudenta(List<Student> stud)
+        {
+            Console.WriteLine("Search for Student");
+            string stName = Console.ReadLine();
+
+            bool studentFound = false;
+
+            for (int i = 0; i < stud.Count; i++)
+            {
+                if(stud[i].Name.Equals(stName, StringComparison.OrdinalIgnoreCase))
+                {
+                    studentFound = true;
+                    int option;
+                    Console.WriteLine("What would you like to change");
+                    Console.WriteLine("1. Name\n2. Surname\n3. Campus\n4. Degree");
+                    option = Convert.ToInt32(Console.ReadLine());
+
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter New Name");
+                            string name = Console.ReadLine();
+                            stud[i].Name = name;
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter New Surname");
+                            string surname = Console.ReadLine();
+                            stud[i].Surname = surname;
+                            break;
+                        case 3:
+                            Console.WriteLine("Enter new Campus");
+                            string campus = Console.ReadLine();
+                            stud[i].Campus = campus;
+                            break;
+                        case 4:
+                            Console.WriteLine("Enter new Degree");
+                            string degree = Console.ReadLine();
+                            stud[i].Degree = degree;
+                            break;
+                        default:
+                            Console.WriteLine("Incorrect Option!\nChoose between 1 to 4");
+                            break;
+                    }
+                }
+            }
+
+            if (!studentFound)
+            {
+                Console.WriteLine("Student does not exist!");
+            }
+        }
     }
 }
