@@ -141,19 +141,50 @@ namespace StudentCampus
 
         public static void DisplayCampus(List<Campus> camp)
         {
-            foreach(var campus in camp)
+            Console.WriteLine("Look for Campus");
+            string cname = Console.ReadLine();
+
+            bool campusFound = false;
+
+            for(int i=0;i < camp.Count; i++)
             {
-                Console.WriteLine(campus);
-                Console.WriteLine("\n");
+                
+                if(camp[i].Name.Equals(cname, StringComparison.OrdinalIgnoreCase))
+                {
+                    campusFound = true;
+
+                    Console.WriteLine("Campus Found");
+                    Console.WriteLine($"Name: {camp[i].Name} \nProvince: {camp[i].Province} \nCity: {camp[i].City} \nSurbub: {camp[i].Surbub}");
+                }
+            }
+
+            if (!campusFound)
+            {
+                Console.WriteLine("Campus does not exist");
             }
         }
 
         public static void DisplayStudent(List<Student> stud)
         {
-            foreach(var student in stud)
+            Console.WriteLine("Enter student name to search");
+            string name = Console.ReadLine();
+
+            bool studentFound = false;
+
+            for(int i=0;i < stud.Count; i++)
             {
-                Console.WriteLine(student);
-                Console.WriteLine("\n");
+                if (stud[i].Name.Equals(name, StringComparison.OrdinalIgnoreCase)){
+                    studentFound = true;
+
+                    Console.WriteLine("Student found");
+                    Console.WriteLine($"{stud[i].Name}\n Surname: {stud[i].Surname} \nDegree: {stud[i].Degree}");
+                    break;
+                }
+            }
+
+            if (!studentFound)
+            {
+                Console.WriteLine("Student does not exist");
             }
         }
 
